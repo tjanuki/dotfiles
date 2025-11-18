@@ -27,11 +27,13 @@ Install directly from GitHub without cloning:
 
 ```bash
 # Install to current directory
-bash <(curl -fsSL https://raw.githubusercontent.com/tjanuki/dotfiles/main/install.sh)
+curl -fsSL https://raw.githubusercontent.com/tjanuki/dotfiles/main/install.sh | bash
 
 # Install to specific directory
-bash <(curl -fsSL https://raw.githubusercontent.com/tjanuki/dotfiles/main/install.sh) /path/to/your/project
+curl -fsSL https://raw.githubusercontent.com/tjanuki/dotfiles/main/install.sh | bash -s -- /path/to/your/project
 ```
+
+**Note:** This syntax works in all shells (bash, zsh, fish, etc.)
 
 ### Local Installation
 

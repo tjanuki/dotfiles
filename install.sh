@@ -2,7 +2,7 @@
 
 # Installation script for dotfiles
 # Usage: ./install.sh [target_directory]
-# Or: bash <(curl -fsSL https://raw.githubusercontent.com/tjanuki/dotfiles/main/install.sh)
+# Or: curl -fsSL https://raw.githubusercontent.com/tjanuki/dotfiles/main/install.sh | bash
 #
 # This script sets up a new project with:
 # - .claude/output directory structure
