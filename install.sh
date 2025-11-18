@@ -6,7 +6,6 @@
 # This script sets up a new project with:
 # - .claude/output directory structure
 # - create-output.sh script
-# - deploy.sh script (from template)
 
 set -e  # Exit on error
 
@@ -48,26 +47,10 @@ else
     echo "✓ create-output.sh already exists"
 fi
 
-# Copy deploy template
-if [ ! -f "$TARGET_DIR/.claude/output/deploy.sh" ]; then
-    echo "🚢 Installing deploy.sh template..."
-    cp "$(dirname "$0")/scripts/deploy.template.sh" "$TARGET_DIR/.claude/output/deploy.sh"
-    chmod +x "$TARGET_DIR/.claude/output/deploy.sh"
-    echo ""
-    echo "⚠️  IMPORTANT: Edit .claude/output/deploy.sh to customize for your project:"
-    echo "   - Set PROJECT_NAME"
-    echo "   - Set SSH_HOST"
-    echo "   - Set PROJECT_PATH"
-    echo "   - Adjust deployment steps as needed"
-else
-    echo "✓ deploy.sh already exists"
-fi
-
 echo ""
 echo "✨ Installation complete!"
 echo ""
 echo "Next steps:"
-echo "  1. Customize .claude/output/deploy.sh with your project settings"
-echo "  2. Use create-output.sh to create organized output files:"
-echo "     .claude/output/create-output.sh <task_name> <file_name>"
+echo "  Use create-output.sh to create organized output files:"
+echo "  .claude/output/create-output.sh <task_name> <file_name>"
 echo ""
