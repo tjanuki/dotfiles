@@ -27,13 +27,13 @@ To set up a new project with these dotfiles:
 
 ```bash
 cd /path/to/your/project
-/Users/tjanuki/Codes/dotfiles/install.sh
+~/Codes/dotfiles/install.sh
 ```
 
 Or install to a specific directory:
 
 ```bash
-/Users/tjanuki/Codes/dotfiles/install.sh /path/to/your/project
+~/Codes/dotfiles/install.sh /path/to/your/project
 ```
 
 ### What Gets Installed
