@@ -21,9 +21,21 @@ dotfiles/
 
 ## Installation
 
-### Quick Start
+### Remote Installation (Recommended)
 
-To set up a new project with these dotfiles:
+Install directly from GitHub without cloning:
+
+```bash
+# Install to current directory
+bash <(curl -fsSL https://raw.githubusercontent.com/tjanuki/dotfiles/main/install.sh)
+
+# Install to specific directory
+bash <(curl -fsSL https://raw.githubusercontent.com/tjanuki/dotfiles/main/install.sh) /path/to/your/project
+```
+
+### Local Installation
+
+If you have the repository cloned locally:
 
 ```bash
 cd /path/to/your/project

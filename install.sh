@@ -2,12 +2,26 @@
 
 # Installation script for dotfiles
 # Usage: ./install.sh [target_directory]
+# Or: bash <(curl -fsSL https://raw.githubusercontent.com/tjanuki/dotfiles/main/install.sh)
 #
 # This script sets up a new project with:
 # - .claude/output directory structure
 # - create-output.sh script
 
 set -e  # Exit on error
+
+# GitHub repository base URL for raw files
+GITHUB_RAW_URL="https://raw.githubusercontent.com/tjanuki/dotfiles/main"
+
+# Determine if running locally or remotely
+SCRIPT_DIR="$(dirname "$0")"
+if [ -f "$SCRIPT_DIR/.claude/output/.gitignore" ]; then
+    REMOTE_MODE=false
+    echo "📦 Running in local mode"
+else
+    REMOTE_MODE=true
+    echo "☁️  Running in remote mode (downloading from GitHub)"
+fi
 
 # Determine target directory
 if [ -z "$1" ]; then
@@ -30,18 +44,26 @@ else
     echo "✓ .claude/output directory already exists"
 fi
 
-# Copy .gitignore
+# Copy or download .gitignore
 if [ ! -f "$TARGET_DIR/.claude/output/.gitignore" ]; then
-    echo "📋 Copying .claude/output/.gitignore..."
-    cp "$(dirname "$0")/.claude/output/.gitignore" "$TARGET_DIR/.claude/output/.gitignore"
+    echo "📋 Installing .claude/output/.gitignore..."
+    if [ "$REMOTE_MODE" = true ]; then
+        curl -fsSL "$GITHUB_RAW_URL/.claude/output/.gitignore" -o "$TARGET_DIR/.claude/output/.gitignore"
+    else
+        cp "$SCRIPT_DIR/.claude/output/.gitignore" "$TARGET_DIR/.claude/output/.gitignore"
+    fi
 else
     echo "✓ .claude/output/.gitignore already exists"
 fi
 
-# Copy create-output.sh
+# Copy or download create-output.sh
 if [ ! -f "$TARGET_DIR/.claude/output/create-output.sh" ]; then
     echo "📝 Installing create-output.sh..."
-    cp "$(dirname "$0")/scripts/create-output.sh" "$TARGET_DIR/.claude/output/create-output.sh"
+    if [ "$REMOTE_MODE" = true ]; then
+        curl -fsSL "$GITHUB_RAW_URL/scripts/create-output.sh" -o "$TARGET_DIR/.claude/output/create-output.sh"
+    else
+        cp "$SCRIPT_DIR/scripts/create-output.sh" "$TARGET_DIR/.claude/output/create-output.sh"
+    fi
     chmod +x "$TARGET_DIR/.claude/output/create-output.sh"
 else
     echo "✓ create-output.sh already exists"
