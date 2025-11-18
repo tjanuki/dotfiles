@@ -58,6 +58,16 @@ Creates organized output files in a timestamped directory structure.
 .claude/output/create-output.sh user_auth authentication-flow.md
 ```
 
+**Using with Claude Code:**
+
+When working with Claude Code, you can instruct Claude to output content directly to a new organized file:
+
+```
+Output the implementation plan using @.claude/output/create-output.sh payment_gateway implementation-plan
+```
+
+This tells Claude to create the file using your organized structure automatically.
+
 **Features:**
 - Automatically creates date-based directories (YYYYMMDD)
 - Reuses existing directories for the same task on the same day
